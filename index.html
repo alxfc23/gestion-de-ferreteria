@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gestión de Ferretería</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23166534'/%3E%3Ctext x='50' y='70' font-size='54' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'%3EF%3C/text%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <div id="vista-login" class="login-wrap">
+    <div class="login-card">
+      <div class="login-logo">
+        <div class="logo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+        <h1>Gestión de Ferretería</h1>
+        <p>Sistema de gestión</p>
+      </div>
+      <form id="form-login" autocomplete="off">
+        <label for="login-correo">Correo</label>
+        <input type="email" id="login-correo" placeholder="correo@ejemplo.com" required />
+        <label for="login-password">Contraseña</label>
+        <input type="password" id="login-password" placeholder="••••••••" required />
+        <div id="login-error" class="login-error"></div>
+        <button type="submit" class="btn btn-primary btn-block">Entrar</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="vista-app" class="app hidden">
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <div class="logo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+        <div>
+          <strong>Ferretería</strong>
+          <span>Gestión</span>
+        </div>
+      </div>
+      <nav class="nav" id="nav">
+        <button class="nav-item active" data-accion="inicio">
+          <svg class="nav-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          Inicio
+        </button>
+        <button class="nav-item" data-accion="ventas">
+          <svg class="nav-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+          Caja / Ventas
+        </button>
+        <button class="nav-item" data-accion="productos">
+          <svg class="nav-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>
+          Productos <span class="nav-badge hidden" id="badge-stock">0</span>
+        </button>
+        <button class="nav-item" data-accion="historial">
+          <svg class="nav-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l4 2"/></svg>
+          Historial de ventas
+        </button>
+        <button class="nav-item" data-accion="usuarios">
+          <svg class="nav-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          Usuarios
+        </button>
+        <button class="nav-item" data-accion="configuracion">
+          <svg class="nav-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          Configuración
+        </button>
+      </nav>
+      <div class="sidebar-user">
+        <div class="user-avatar" id="user-avatar-inicial">A</div>
+        <div class="user-info">
+          <strong id="user-nombre">Nombre</strong>
+          <span id="user-rol">rol</span>
+        </div>
+        <button id="btn-salir" class="btn-logout" title="Cerrar sesión">Salir</button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <h2 id="titulo-seccion">Inicio</h2>
+        <div class="topbar-right">
+          <span id="fecha-hoy"></span>
+        </div>
+      </header>
+
+      <section id="vista-inicio" class="vista active">
+        <div class="filtros-periodo">
+          <span class="filtros-label">Periodo:</span>
+          <button class="seg" data-periodo="hoy">Hoy</button>
+          <button class="seg" data-periodo="7d">Última semana</button>
+          <button class="seg" data-periodo="30d">Último mes</button>
+          <button class="seg" data-periodo="otro">Otro</button>
+          <div class="rango-custom hidden" id="rango-otro">
+            <input type="date" id="rango-desde" />
+            <span>—</span>
+            <input type="date" id="rango-hasta" />
+          </div>
+        </div>
+        <div class="grid-cards" id="cards-resumen"></div>
+        <div class="grid-2">
+          <div class="panel">
+            <h3>Ventas últimos 7 días</h3>
+            <div class="chart-bars" id="chart-ventas"></div>
+          </div>
+          <div class="panel">
+            <h3>Productos más vendidos</h3>
+            <div id="top-productos"></div>
+          </div>
+        </div>
+        <div class="panel">
+          <h3>Estado del inventario</h3>
+          <div class="grid-2">
+            <div>
+              <h4>Productos con stock bajo</h4>
+              <div id="stock-bajo"></div>
+            </div>
+            <div>
+              <h4>Productos por categoría</h4>
+              <div class="chart-bars" id="chart-categorias"></div>
+            </div>
+          </div>
+        </div>
+        <button id="btn-ocultar-dinero" class="btn-flotante-dinero" type="button" aria-pressed="false"></button>
+      </section>
+
+      <section id="vista-ventas" class="vista">
+        <div class="grid-ventas">
+          <div class="panel">
+            <h3>Buscar y agregar productos</h3>
+            <input type="text" id="buscar-producto-venta" placeholder="Buscar o escanear: escribe el código y presiona Enter" autocomplete="off" spellcheck="false" />
+            <div class="product-grid" id="lista-productos-venta"></div>
+          </div>
+          <div class="panel">
+            <h3>Ticket actual</h3>
+            <div id="carrito-vacio" class="empty">El ticket está vacío</div>
+            <table class="table" id="tabla-carrito">
+              <thead>
+                <tr>
+                  <th>Producto</th>
+                  <th>Precio</th>
+                  <th>Cant.</th>
+                  <th>Subtotal</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="carrito-body"></tbody>
+            </table>
+            <div class="ticket-totales">
+              <div><span>Subtotal</span><span id="total-subtotal">$0.00</span></div>
+              <div id="fila-comision" class="hidden"><span>Comisión tarjeta</span><span id="total-comision">$0.00</span></div>
+              <div class="total"><span>Total</span><span id="total-grand">$0.00</span></div>
+            </div>
+            <label class="metodo-label">Método de pago</label>
+            <div class="seg metodo-seg" id="metodo-pago">
+              <button class="seg-btn active" data-metodo="efectivo">Efectivo</button>
+              <button class="seg-btn" data-metodo="tarjeta">Tarjeta</button>
+              <button class="seg-btn" data-metodo="transferencia">Transferencia</button>
+            </div>
+            <button class="btn btn-primary btn-block" id="btn-cobrar">Cobrar venta</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="vista-productos" class="vista">
+        <div class="panel">
+          <div class="panel-head">
+            <h3>Inventario de productos</h3>
+            <div class="panel-tools">
+              <input type="text" id="buscar-producto" placeholder="Buscar producto..." />
+              <select id="filtro-categoria">
+                <option value="">Todas las categorías</option>
+              </select>
+              <button class="btn" id="btn-exportar-productos">Exportar CSV</button>
+              <button class="btn btn-primary" id="btn-nuevo-producto">+ Nuevo producto</button>
+            </div>
+          </div>
+          <table class="table" id="tabla-productos">
+            <thead>
+              <tr>
+                <th>Código</th>
+                <th>Producto</th>
+                <th>Categoría</th>
+                <th>Unidad</th>
+                <th>Costo</th>
+                <th>Precio</th>
+                <th>Margen</th>
+                <th>Stock</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="productos-body"></tbody>
+          </table>
+          <div id="productos-vacio" class="empty hidden">No hay productos. Crea uno nuevo.</div>
+        </div>
+      </section>
+
+      <section id="vista-historial" class="vista">
+        <div class="panel">
+          <div class="panel-head">
+            <h3>Historial de ventas</h3>
+            <div class="panel-tools">
+              <input type="date" id="filtro-desde" />
+              <input type="date" id="filtro-hasta" />
+              <select id="filtro-vendedor">
+                <option value="">Todos los vendedores</option>
+              </select>
+              <select id="filtro-metodo">
+                <option value="">Todos los métodos</option>
+                <option value="efectivo">Efectivo</option>
+                <option value="tarjeta">Tarjeta</option>
+                <option value="transferencia">Transferencia</option>
+              </select>
+              <button class="btn" id="btn-corte-caja">Corte de caja</button>
+              <button class="btn" id="btn-exportar-ventas">Exportar CSV</button>
+              <button class="btn" id="btn-limpiar-filtros">Limpiar</button>
+            </div>
+          </div>
+          <table class="table" id="tabla-ventas">
+            <thead>
+              <tr>
+                <th>Folio</th>
+                <th>Fecha</th>
+                <th>Vendedor</th>
+                <th>Método</th>
+                <th>Artículos</th>
+                <th>Total</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="ventas-body"></tbody>
+          </table>
+          <div id="ventas-vacio" class="empty hidden">No hay ventas registradas.</div>
+        </div>
+      </section>
+
+      <section id="vista-usuarios" class="vista">
+        <div class="panel">
+          <div class="panel-head">
+            <h3>Usuarios del sistema</h3>
+            <button class="btn btn-primary" id="btn-nuevo-usuario">+ Nuevo usuario</button>
+          </div>
+          <table class="table" id="tabla-usuarios">
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Correo</th>
+                <th>Rol</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="usuarios-body"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="vista-configuracion" class="vista">
+        <div class="panel">
+          <div class="panel-head">
+            <h3>Configuración de la tienda</h3>
+          </div>
+          <div class="config-form">
+            <label class="metodo-label" for="cfg-comision-tarjeta">Comisión por pago con tarjeta (%)</label>
+            <input type="number" id="cfg-comision-tarjeta" min="0" max="100" step="0.5" placeholder="0" />
+            <p class="campo-unidad">Si es mayor a 0, se suma ese porcentaje al total del ticket cuando el cliente paga con tarjeta. Déjala en 0 para no cobrar comisión.</p>
+
+            <label class="metodo-label" for="cfg-ocultar-montos">Privacidad</label>
+            <label class="switch-line">
+              <input type="checkbox" id="cfg-ocultar-montos" />
+              <span>Ocultar montos por defecto</span>
+            </label>
+            <p class="campo-unidad">Los montos del Inicio aparecen ocultos al entrar; se muestran con el botón flotante.</p>
+            <button class="btn btn-primary" id="btn-guardar-configuracion">Guardar cambios</button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div id="modal-root"></div>
+
+  <div id="toast" class="toast hidden"></div>
+
+  <script src="js/store.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/inventory.js"></script>
+  <script src="js/sales.js"></script>
+  <script src="js/stats.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+{
+  "name": "gestion-de-ferreteria",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Sistema de punto de venta e inventario para ferreterías (código abierto)",
+  "scripts": {
+    "setup": "npm --prefix backend run setup",
+    "start": "npm --prefix backend start"
+  }
+}
