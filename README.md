@@ -14,8 +14,6 @@ Sistema de **código abierto** de punto de venta e inventario para ferreterías.
 
 ## Requisitos
 
-<img width="735" height="756" alt="descarga (1)" src="https://github.com/user-attachments/assets/761bb3f9-337d-4622-adcf-e5501fe2f428" />
-
 - [Node.js](https://nodejs.org) 18 o superior
 - [MariaDB](https://mariadb.org) (o MySQL) 10.4+ corriendo localmente
 
