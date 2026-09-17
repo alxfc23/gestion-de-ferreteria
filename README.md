@@ -1,3 +1,4 @@
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/0a5f9541-df83-4d96-b791-d2ef3e470467" />
 # Gestión de Ferretería
 
 Sistema de **código abierto** de punto de venta e inventario para ferreterías. Frontend en HTML/CSS/JS puro, backend en Node.js + Express + MariaDB. Clónalo, configúralo y adáptalo a tu tienda: el nombre de la ferretería se cambia en unos segundos (busca "Ferretería" o "Perico" en el código para re-marcar tus tickets).
